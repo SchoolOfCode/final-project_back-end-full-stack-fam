@@ -17,8 +17,6 @@ app.get("/",function (req, res) {
   res.json({ message: "Hello from the root path!" });
 });
 
-// CHANGE - default info
-app.use('/users', usersRouter);
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -28,6 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+// CHANGE - default info
+app.use('/users', usersRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({message: "We couldn't find what you were looking for 😞"})
