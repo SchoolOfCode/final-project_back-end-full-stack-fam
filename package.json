@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node -r dotenv/config ./bin/www.js",
     "dev": "nodemon -r dotenv/config ./bin/www.js",
-    "createTable": "node -r dotenv/config ./db/scripts/createTable.js",
+    "createChildTable": "node -r dotenv/config ./db/scripts/createChildTable.js",
+    "createParentTable": "node -r dotenv/config ./db/scripts/createParentTable.js",
     "deleteTable": "node -r dotenv/config ./db/scripts/dropTable.js",
     "populateTable": "node -r dotenv/config ./db/scripts/populateTable.js"
   },
