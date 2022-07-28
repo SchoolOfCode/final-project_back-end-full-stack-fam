@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 
 // // Router Imports
 import parentRouter  from './routes/parent.js';
+import childRouter from './routes/child.js';
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //parent Route
 app.use('/parent', parentRouter);
+app.use('/child', childRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({message: "We couldn't find what you were looking for 😞"})
