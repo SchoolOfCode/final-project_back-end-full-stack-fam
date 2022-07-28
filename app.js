@@ -1,14 +1,13 @@
 import express from 'express';
 import path from 'path';
-
 import __dirname  from './dirname.js';
 import cookieParser  from 'cookie-parser';
 import cors  from 'cors';
 import logger  from 'morgan';
 import bodyParser from "body-parser";
 
-// // CHANGE - default info
-import usersRouter  from './routes/users.js';
+// // Router Imports
+import parentRouter  from './routes/parent.js';
 
 const app = express();
 
@@ -27,8 +26,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// CHANGE - default info
-app.use('/users', usersRouter);
+//parent Route
+app.use('/parent', parentRouter);
 
 app.use(function (req, res, next) {
   res.status(404).json({message: "We couldn't find what you were looking for 😞"})
