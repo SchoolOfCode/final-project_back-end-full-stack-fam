@@ -9,7 +9,8 @@
     "createChildTable": "node -r dotenv/config ./db/scripts/createChildTable.js",
     "createParentTable": "node -r dotenv/config ./db/scripts/createParentTable.js",
     "deleteTable": "node -r dotenv/config ./db/scripts/dropTable.js",
-    "populateParentTable": "node -r dotenv/config ./db/scripts/populateParentTable.js"
+    "populateParentTable": "node -r dotenv/config ./db/scripts/populateParentTable.js",
+    "populateChildTable": "node -r dotenv/config ./db/scripts/populateChildTable.js"
   },
   "dependencies": {
     "body-parser": "^1.20.0",
