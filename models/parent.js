@@ -51,3 +51,17 @@ export async function putParentData(id, parentData) {
   return response.rows
 }
 
+//PATCH
+export async function patchParentData(id, parentData) {
+  const { column, newvalue } = parentData;
+  console.log(`patch request for ${column} on row with id ${id}`)
+  const response = await pool.query(
+    `UPDATE parent
+    SET ${column} = ($1)
+    WHERE id=(${id}) RETURNING *;`,
+    [
+      newvalue
+    ]     
+  );
+  return response.rows
+}
