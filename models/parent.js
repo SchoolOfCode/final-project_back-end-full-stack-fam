@@ -51,16 +51,3 @@ export async function putParentData(id, parentData) {
   return response.rows
 }
 
- 
-  //UPDATE (PUT) A GLOSSARY TERM
-  export async function updateGlossaryTerm(id, updatedGlossaryTerm) {
-    const res = await query(
-    `UPDATE glossary 
-    SET word =($1), 
-    definition=($2)
-    WHERE id=(${id}) RETURNING*;`,
-    [updatedGlossaryTerm.word , updatedGlossaryTerm.definition]
-    );
-    console.log(`glossary term updated: ${JSON.stringify(res.rows)}`)
-    return res.rows;
-  }
