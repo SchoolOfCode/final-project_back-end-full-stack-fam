@@ -1,5 +1,5 @@
 import express from "express";
-import { getParentData, postParentData } from "../models/parent.js";
+import { getParentData, postParentData, putParentData } from "../models/parent.js";
 
 const parentRouter = express.Router();
 
@@ -14,8 +14,17 @@ parentRouter.get("/", async (req, res) => {
 parentRouter.post("/", async (req, res) => {
   const data = req.body
   const result = await postParentData(data);
-  console.log(`POST request made to parent: ${JSON.stringify(req.body)}`)
-  res.status(200).json({ success: true, payload: result });
+  console.log(`POST request made to parent: ${JSON.stringify(req.body)}`);
+  res.status(201).json({ success: true, payload: result });
 });
+
+// PUT PARENT DATA BY ID 
+parentRouter.put("/:id", async (req,res) => {
+  const data = req.body;
+  const id = req.params.id;
+  const result = await putParentData(id, data);
+  console.log(`PUT requst made to parent: ${JSON.stringify(req.body)}`);
+  res.status(204).json({ success: true, message: `successfully updated parent table, row with id ${id}` });
+})
 
 export default parentRouter;
