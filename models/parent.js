@@ -1,11 +1,13 @@
 import { pool } from "../db/index.js";
 
+//GET ALL
 export async function getParentData() {
   const data = await pool.query("SELECT * FROM parent;");
   console.log("GET request from parent", data.rows);
   return data.rows;
 }
 
+//POST 
 export async function postParentData(parentData) {
   const { firstname, lastname, passcode, studentid, email } = parentData;
   const response = await pool.query(
@@ -24,4 +26,26 @@ export async function postParentData(parentData) {
     ]
   );
   return response.rows;
+}
+
+//PUT
+export async function putParentData(id, parentData) {
+  const { firstname, lastname, passcode, studentid, email } = parentData;
+  const response = await pool.query(
+    `UPDATE parent
+    SET firstname = ($1),
+        lastname = ($2),
+        passcode = ($3),
+        studentid = ($4),
+        email ($5)
+    WHERE id = ($6) RETURNING *;`,[
+      firstname,
+      lastname,
+      passcode,
+      studentid,
+      email,
+      id
+    ]     
+  );
+  return response.rows
 }
