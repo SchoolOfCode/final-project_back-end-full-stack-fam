@@ -27,11 +27,20 @@ parentRouter.put("/:id", async (req,res) => {
   res.status(204).json({ success: true });
 })
 
+
+// PATCH PARENT DATA BY ID
 parentRouter.patch("/:id", async (req,res) => {
   const data = req.body;
   const id = req.params.id;
-  const result = await patchParentData(id, data)
-  res.status(204).json({success: true })
+  const result = await patchParentData(id, data);
+  res.status(204).json({success: true });
+})
+
+// DELETE PARENT DATA BY ID 
+parentRouter.delete("/:id", async (req,res) => {
+  const id = req.params.id;
+  await deleteParentData(id);
+  res.status(204);
 })
 
 export default parentRouter;
