@@ -18,4 +18,7 @@ parentRouter.post("/", async (req, res) => {
   res.status(200).json({ success: true, payload: result });
 });
 
+// PUT PARENT DATA BY ID 
+
+
 export default parentRouter;
