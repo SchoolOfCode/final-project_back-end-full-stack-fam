@@ -31,21 +31,36 @@ export async function postParentData(parentData) {
 //PUT
 export async function putParentData(id, parentData) {
   const { firstname, lastname, passcode, studentid, email } = parentData;
+  console.log(`put request for ${firstname}`)
   const response = await pool.query(
     `UPDATE parent
     SET firstname = ($1),
         lastname = ($2),
         passcode = ($3),
         studentid = ($4),
-        email ($5)
-    WHERE id = ($6) RETURNING *;`,[
+        email = ($5)
+    WHERE id=(${id}) RETURNING *;`,
+    [
       firstname,
       lastname,
       passcode,
       studentid,
-      email,
-      id
+      email
     ]     
   );
   return response.rows
 }
+
+ 
+  //UPDATE (PUT) A GLOSSARY TERM
+  export async function updateGlossaryTerm(id, updatedGlossaryTerm) {
+    const res = await query(
+    `UPDATE glossary 
+    SET word =($1), 
+    definition=($2)
+    WHERE id=(${id}) RETURNING*;`,
+    [updatedGlossaryTerm.word , updatedGlossaryTerm.definition]
+    );
+    console.log(`glossary term updated: ${JSON.stringify(res.rows)}`)
+    return res.rows;
+  }
