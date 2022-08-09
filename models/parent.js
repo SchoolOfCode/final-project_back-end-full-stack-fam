@@ -1,5 +1,20 @@
 import { pool } from "../db/index.js";
 
+// GET ALL STUDENT DATA BY PARENT EMAILS
+export async function getByEmail(email){
+  if(email === null){
+      return "no email found"
+  }
+  // email = email.replace(/[^0-9a-z]/gi, '')
+  console.log(`finding child data of user with the ${email}`)
+  const res = await pool.query(`SELECT * FROM child RIGHT JOIN parent ON child.student_id = parent.student_id WHERE email = '%${email}%'`)
+  for (let i = 0 ; i < res.rows.length ; i++){
+  console.log(`returned resource matching search: ${JSON.stringify(res.rows[i].link)}`)
+  }
+  return res.rows
+}
+
+
 //GET ALL
 export async function getParentData() {
   const data = await pool.query("SELECT * FROM parent;");
