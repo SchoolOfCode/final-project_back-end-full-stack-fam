@@ -7,16 +7,14 @@ export async function getChildData() {
 }
 
 export async function postChildData(childData) {
-  const { studentid, name, scoreone, timecompleted, datecompleted } = childData;
+  const {name, scoreone, timecompleted, datecompleted } = childData;
   const response = await pool.query(
     `INSERT INTO child (
-      studentid,
       name,
       scoreone,
       timecompleted,
       datecompleted
-    ) VALUES ($1,$2,$3,$4,$5) RETURNING *;`,[
-      studentid,
+    ) VALUES ($1,$2,$3,$4) RETURNING *;`,[
       name,
       scoreone,
       timecompleted,

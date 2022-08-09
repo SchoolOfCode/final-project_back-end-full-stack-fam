@@ -7,7 +7,7 @@ async function createParentTable() {
       firstname TEXT NOT NULL,
       lastname TEXT NOT NULL,
       passcode INT NOT NULL,
-      studentid TEXT NOT NULL,
+      student_id INT REFERENCES child (student_id),
       email TEXT NOT NULL
     );`
   );
