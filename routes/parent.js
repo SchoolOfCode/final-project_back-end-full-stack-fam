@@ -3,6 +3,13 @@ import { getParentData, postParentData, putParentData, patchParentData, getByEma
 
 const parentRouter = express.Router();
 
+// GET ALL PARENT DATA
+parentRouter.get("/", async (req, res) => {
+  console.log(req)
+  const data = await getParentData();
+  res.json({ success: true, payload: data });
+});
+
 // GET ALL STUDENT DATA BY PARENT EMAILS
 parentRouter.get("/", async function(req, res){
   const email = String(req.query.email);
@@ -14,13 +21,6 @@ parentRouter.get("/", async function(req, res){
    }
   res.status(200).json(responseObject);
 })
-
-// GET ALL PARENT DATA
-parentRouter.get("/", async (req, res) => {
-  console.log(req)
-  const data = await getParentData();
-  res.json({ success: true, payload: data });
-});
 
 // POST NEW PARENT DATA
 parentRouter.post("/", async (req, res) => {
