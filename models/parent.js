@@ -9,19 +9,19 @@ export async function getParentData() {
 
 //POST 
 export async function postParentData(parentData) {
-  const { firstname, lastname, passcode, studentid, email } = parentData;
+  const { firstname, lastname, passcode, student_id, email } = parentData;
   const response = await pool.query(
     `INSERT INTO parent (
       firstname,
       lastname,
       passcode,
-      studentid,
+      student_id,
       email
     ) VALUES ($1,$2,$3,$4,$5) RETURNING *;`,[
       firstname, 
       lastname, 
       passcode,
-      studentid,
+      student_id,
       email
     ]
   );
