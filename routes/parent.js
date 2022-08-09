@@ -11,7 +11,7 @@ parentRouter.get("/", async (req, res) => {
 });
 
 // GET ALL STUDENT DATA BY PARENT EMAILS
-parentRouter.get("/", async function(req, res){
+parentRouter.get("/search", async function(req, res){
   const email = String(req.query.email);
   console.log(`GET request for child data matching parent email - ${email}`);
    const responseObject = {
