@@ -4,10 +4,10 @@ async function createChildTable() {
     const created = await pool.query(
       `CREATE TABLE IF NOT EXISTS child (
         student_id SERIAL PRIMARY KEY,
-        name TEXT NOT NULL,
+        name TEXT NOT NULL UNIQUE,
         scoreone INT NOT NULL,
-        timecompleted TIME NOT NULL,
-        datecompleted DATE NOT NULL 
+        timecompleted TEXT NOT NULL,
+        datecompleted TEXT NOT NULL 
       );`
     );
     console.log("child table created", created.command);

@@ -7,7 +7,7 @@ export async function getByEmail(email){
   }
   // email = email.replace(/[^0-9a-z]/gi, '')
   console.log(`finding child data of user with the ${email}`)
-  const res = await pool.query(`SELECT * FROM child RIGHT JOIN parent ON child.student_id = parent.student_id WHERE email = '${email}'`)
+  const res = await pool.query(`SELECT * FROM child RIGHT JOIN parent ON child.name = parent.childname WHERE email = '${email}'`)
   for (let i = 0 ; i < res.rows.length ; i++){
   console.log(`returned resource matching search: ${JSON.stringify(res.rows[i])}`)
   }
@@ -24,19 +24,19 @@ export async function getParentData() {
 
 //POST 
 export async function postParentData(parentData) {
-  const { firstname, lastname, passcode, student_id, email } = parentData;
+  const { firstname, lastname, passcode, childname, email } = parentData;
   const response = await pool.query(
     `INSERT INTO parent (
       firstname,
       lastname,
       passcode,
-      student_id,
+      childname,
       email
     ) VALUES ($1,$2,$3,$4,$5) RETURNING *;`,[
       firstname, 
       lastname, 
       passcode,
-      student_id,
+      childname,
       email
     ]
   );
@@ -45,21 +45,21 @@ export async function postParentData(parentData) {
 
 //PUT
 export async function putParentData(id, parentData) {
-  const { firstname, lastname, passcode, studentid, email } = parentData;
+  const { firstname, lastname, passcode, childname, email } = parentData;
   console.log(`put request for ${firstname}`)
   const response = await pool.query(
     `UPDATE parent
     SET firstname = ($1),
         lastname = ($2),
         passcode = ($3),
-        studentid = ($4),
+        childname = ($4),
         email = ($5)
     WHERE id=(${id}) RETURNING *;`,
     [
       firstname,
       lastname,
       passcode,
-      studentid,
+      childname,
       email
     ]     
   );
