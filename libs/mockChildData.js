@@ -2,22 +2,22 @@ export const mockChildData = [
     {
         
         name: "Noah Jr",
-        scoreone: 0,
-        timecompleted: '00:00:00',
-        datecompleted: '1995-03-24'
+        scoreone: 50,
+        timecompleted: '13:03:53',
+        datecompleted: 'Thu Aug 11 2022'
     },
     {
       
         name: "Nasra II",
-        scoreone: 0,
-        timecompleted: '00:00:00',
-        datecompleted: '2022-04-01 '
+        scoreone: 34,
+        timecompleted: '15:13:20',
+        datecompleted: 'Thu Aug 10 2022 '
     },
     {
 
-        name: "lil coder",
-        scoreone: 0,
-        timecompleted: '00:00:00',
-        datecompleted: '2011-05-03 '
+        name: "Herbert",
+        scoreone: 15,
+        timecompleted: '17:30:10',
+        datecompleted: 'Thu Aug 9 2022'
     },
 ]

@@ -4,7 +4,7 @@ async function createChildTable() {
     const created = await pool.query(
       `CREATE TABLE IF NOT EXISTS child (
         student_id SERIAL PRIMARY KEY,
-        name TEXT NOT NULL UNIQUE,
+        name TEXT NOT NULL,
         scoreone INT NOT NULL,
         timecompleted TEXT NOT NULL,
         datecompleted TEXT NOT NULL 

@@ -14,11 +14,11 @@ export const mockParentData = [
             email: "nasraxsaleh@gmail.com"
 	},
 	{
-            firstname: "Chris",
-            lastname: "Meah",
+            firstname: "Luca",
+            lastname: "Osztian",
             passcode: 9999,
-            childname: "lil coder",
-            email: "soc@org.uk"
+            childname: "Herbert",
+            email: "pirsonomorgolosta@gmail.com"
 	},
 
 ]
